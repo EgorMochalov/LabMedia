@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    async function loadData() {
+    function loadData() {
         fetch('https://5ebbb8e5f2cfeb001697d05c.mockapi.io/users').then(data => data.json()).then(res => {
             data = res
             saveData = structuredClone(res);
