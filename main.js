@@ -61,14 +61,12 @@ document.addEventListener('DOMContentLoaded', () => {
         let tabelBody = document.querySelector('.tabelBody')
         let newBody = document.createElement('div')
         newBody.classList.add('tabelBody')
-        console.log(page)
         if (page < Math.ceil(Data.length / 5) && new URLSearchParams(window.location.search).get('page')) {
             page = new URLSearchParams(window.location.search).get('page')
         }
         else if(new URLSearchParams(window.location.search).get('page')) {
             page = Math.ceil(Data.length / 5)
         }
-        console.log(page)
         Data = Data.filter((item, index) => {
             return index + 1 > (page - 1) * 5 && index + 1 <= 5 * page
         })
