@@ -1,0 +1,280 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    position: relative;
+    margin: 0;
+    background: var(--background, #F7F7F7);
+}
+
+.modal {
+    background-color: rgba(220,220,220, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 10;
+}
+
+.modalContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 100;
+    max-width: 353px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 36px;
+}
+
+
+.modalButtonContainer {
+    display: flex;
+    gap: 36px;
+}
+
+.modalTitle {
+    color: #000;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.modalButton {
+    cursor: pointer;
+    padding: 6px 36px;
+    border-radius: 3px;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border: none;
+}
+
+.modalTrue {
+    background: #E0E0E0;
+    color: #828282;
+}
+
+.modalFalse {
+    background: #0CB4F1;
+    color: white;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 80%;
+    padding: 12px;
+}
+
+.searchContainer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 18px 15px 0px rgba(148, 148, 148, 0.15);
+    border-radius: 7px;
+    padding: 16px;
+}
+
+.searchInput {
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    padding: 9px;
+    padding-left: 28px;
+    border-radius: 4px;
+    background: #ECEFF0;
+    color: #9EAAB4;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.searchInput::placeholder {
+    color: #9EAAB4;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.searcрButton {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    bottom: 5px;
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.searchInputCont {
+    position: relative;
+}
+
+.clear {
+    display: flex;
+    align-items: center;
+    color: #4F4F4F;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    align-self: flex-start;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-top: 24px;
+}
+
+.clear span {
+    margin-left: 4px;
+}
+
+.title {
+    color: #333;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    margin: 0;
+}
+
+.tabelContainer {
+    margin-top: 72px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sort {
+    display: flex;
+    gap: 9px;
+    color: #9EAAB4;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 14px;
+    margin-bottom: 15px;
+}
+
+.sortButton {
+    position: relative;
+    cursor: pointer;
+    background: none;
+    padding: 0;
+    color: #9EAAB4;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 14px;
+    margin-bottom: 15px;
+    border: none;
+}
+
+.sortButton.active {
+    color: #333333;
+}
+
+.sortButton.active path {
+    stroke: #333333;
+}
+
+.sortButton svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.tabel {
+    background-color: white;
+    padding: 16px;
+    padding-top: 2px;
+    border-radius: 7px;
+}
+
+.tabel .row {
+    display: flex;
+}
+
+.tabel .row span {
+    padding-top: 14px;
+    padding-bottom: 20px;
+    flex: 1;
+    color: #9EAAB4;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 14px;
+    border-top: 1px solid #F7F7F7;
+}
+
+.tabel .row.tabelHeader span {
+    border: none;
+}
+
+
+.deliteButton {
+    width: 40px;
+    background: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+}
+
+.tabel .row .tableTitle {
+    color: #0CB4F1;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+}
+
+.dNone {
+    display: none;
+}
+
+.paginationContainer {
+    margin-top: 15px;
+    align-self: center;
+    display: flex;
+    gap: 10px;
+}
+
+.pag {
+    padding: 7px 10px;
+    font-family: Inter;
+    font-size: 12px;
+    line-height: 14px;
+    border-radius: 7px;
+    color: #000;
+    text-decoration: none;
+    background-color: #9EAAB4;
+}
+
+.pag.active {
+    background-color: #0CB4F1;
+}
