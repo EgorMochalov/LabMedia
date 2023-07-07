@@ -203,8 +203,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let rating = document.querySelector('.sortButton.rating')
         if (!rating.classList.contains('doubleClick') && !rating.classList.contains('firstClick')) {
             data = data.sort((a, b) => {
-                if (a.rating > b.rating) return -1;
-                else if (a.rating < b.rating) return 1;
+                if (a.rating < b.rating) return -1;
+                else if (a.rating > b.rating) return 1;
                 else return 0;
             })
             searchFilter(document.querySelector('.searchInput').value.toLowerCase())
@@ -215,8 +215,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         else if (rating.classList.contains('firstClick')) {
             data = data.sort((a, b) => {
-                if (a.rating < b.rating) return -1;
-                else if (a.rating > b.rating) return 1;
+                if (a.rating > b.rating) return -1;
+                else if (a.rating < b.rating) return 1;
                 else return 0;
             })
             searchFilter(document.querySelector('.searchInput').value.toLowerCase())
@@ -251,10 +251,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function clearVisible() {
         if (document.querySelector('.sortButton.rating').classList.contains('active') || document.querySelector('.sortButton.data').classList.contains('active') || document.querySelector('.searchInput').value != "") {
-            document.querySelector('.clear').classList.remove('dNone')
+            document.querySelector('.clear').classList.remove('dHidden')
         }
         else {
-            document.querySelector('.clear').classList.add('dNone')
+            document.querySelector('.clear').classList.add('dHidden')
         }
     }
 

@@ -257,6 +257,10 @@ body {
     display: none;
 }
 
+.dHidden {
+    visibility: hidden;
+}
+
 .paginationContainer {
     margin-top: 15px;
     align-self: center;
@@ -265,9 +269,9 @@ body {
 }
 
 .pag {
-    padding: 7px 10px;
+    padding: 9px 15px;
     font-family: Inter;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 14px;
     border-radius: 7px;
     color: #000;
