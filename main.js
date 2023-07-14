@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let tabelBody = document.querySelector('.tabelBody')
         let newBody = document.createElement('div')
         newBody.classList.add('tabelBody')
-        if (page < Math.ceil(Data.length / 5) && localStorage.getItem('page')) {
+        if (page < Math.ceil(Data.length / 5) && localStorage.getItem('page') && localStorage.getItem('page')<Math.ceil(Data.length / 5)) {
             page = localStorage.getItem('page')
         }
         else if (localStorage.getItem('page')&&Math.ceil(Data.length / 5)!=0) {
@@ -244,6 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
             rating.classList.remove('doubleClick')
             rating.classList.remove('active')
             data = structuredClone(saveData)
+            
             refreshTabel(data)
             searchFilter(document.querySelector('.searchInput').value.toLowerCase())
             localStorage.removeItem('sort')
@@ -274,7 +275,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function clearFilter() {
-        localStorage.clear()
+        localStorage.removeItem('sort')
+        localStorage.removeItem('search')
         document.querySelector('.sortButton.rating').classList.remove('active')
         document.querySelector('.sortButton.rating').classList.remove('firstClick')
         document.querySelector('.sortButton.rating').classList.remove('doubleClick')
