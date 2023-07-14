@@ -64,8 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (page < Math.ceil(Data.length / 5) && localStorage.getItem('page')) {
             page = localStorage.getItem('page')
         }
-        else if (localStorage.getItem('page')) {
+        else if (localStorage.getItem('page')&&Math.ceil(Data.length / 5)!=0) {
             page = Math.ceil(Data.length / 5)
+        }
+        else {
+            page = 1
         }
         console.log(page)
         Data = Data.filter((item, index) => {
