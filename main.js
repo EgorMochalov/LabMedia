@@ -63,12 +63,15 @@ document.addEventListener('DOMContentLoaded', () => {
         newBody.classList.add('tabelBody')
         if (page < Math.ceil(Data.length / 5) && localStorage.getItem('page')) {
             page = localStorage.getItem('page')
+            console.log(1)
         }
         else if (localStorage.getItem('page')&&Math.ceil(Data.length / 5)!=0) {
             page = Math.ceil(Data.length / 5)
+            console.log(2)
         }
         else {
             page = 1
+            console.log(3)
         }
         console.log(page)
         Data = Data.filter((item, index) => {
