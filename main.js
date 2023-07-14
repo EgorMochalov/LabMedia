@@ -1,6 +1,6 @@
 "use strict"
 document.addEventListener('DOMContentLoaded', () => {
-
+    localStorage.clear();
     let page = 1
 
     if (localStorage.getItem('page')) {
@@ -67,9 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (localStorage.getItem('page')) {
             page = Math.ceil(Data.length / 5)
         }
+        console.log(page)
         Data = Data.filter((item, index) => {
             return index + 1 > (page - 1) * 5 && index + 1 <= 5 * page
         })
+        console.log(Data)
         Data.forEach(item => {
             let newRow = document.createElement('div')
             newRow.classList.add('row')
