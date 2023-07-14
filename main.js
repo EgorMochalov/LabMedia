@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let page = 1
 
-    if (new URLSearchParams(window.location.search).get('page')) {
-        page = new URLSearchParams(window.location.search).get('page')
+    if (localStorage.getItem('page')) {
+        page = localStorage.getItem('page')
     }
 
     let data;
@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.sortButton.data').addEventListener('click', sortrDate)
     document.querySelector('.sortButton.rating').addEventListener('click', sortrRating)
     document.querySelector('.clear').addEventListener('click', clearFilter)
-    document.querySelector('.searchInput').addEventListener('input', (e)=>{searchFilter(e.target.value.toLowerCase())})
-    document.querySelector('.searchInput').addEventListener('keyup', ()=>{searchFilter(document.querySelector('.searchInput').value.toLowerCase())})
+    document.querySelector('.searchInput').addEventListener('input', (e) => { searchFilter(e.target.value.toLowerCase()) })
+    document.querySelector('.searchInput').addEventListener('keyup', () => { searchFilter(document.querySelector('.searchInput').value.toLowerCase()) })
 
 
 
@@ -26,27 +26,27 @@ document.addEventListener('DOMContentLoaded', () => {
             refreshTabel(data)
             createPag(data)
 
-            if(localStorage.getItem('search')){
+            if (localStorage.getItem('search')) {
                 searchFilter(localStorage.getItem('search'))
-                document.querySelector('.searchInput').value=localStorage.getItem('search')
+                document.querySelector('.searchInput').value = localStorage.getItem('search')
             }
-            if (localStorage.getItem('sort')){
-                let sort =JSON.parse(localStorage.getItem('sort'))
-                if(sort.source =="data"){
-                    if(sort.click==1){
+            if (localStorage.getItem('sort')) {
+                let sort = JSON.parse(localStorage.getItem('sort'))
+                if (sort.source == "data") {
+                    if (sort.click == 1) {
                         sortrDate()
                     }
-                    else{
+                    else {
                         document.querySelector('.sortButton.data').classList.add('firstClick')
                         document.querySelector('.sortButton.data').classList.add('active')
                         sortrDate()
                     }
                 }
-                else if(sort.source =="rating"){
-                    if(sort.click==1){
+                else if (sort.source == "rating") {
+                    if (sort.click == 1) {
                         sortrRating()
                     }
-                    else{
+                    else {
                         document.querySelector('.sortButton.rating').classList.add('firstClick')
                         document.querySelector('.sortButton.rating').classList.add('active')
                         sortrRating()
@@ -61,10 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
         let tabelBody = document.querySelector('.tabelBody')
         let newBody = document.createElement('div')
         newBody.classList.add('tabelBody')
-        if (page < Math.ceil(Data.length / 5) && new URLSearchParams(window.location.search).get('page')) {
-            page = new URLSearchParams(window.location.search).get('page')
+        if (page < Math.ceil(Data.length / 5) && localStorage.getItem('page')) {
+            page = localStorage.getItem('page')
         }
-        else if(new URLSearchParams(window.location.search).get('page')) {
+        else if (localStorage.getItem('page')) {
             page = Math.ceil(Data.length / 5)
         }
         Data = Data.filter((item, index) => {
@@ -113,9 +113,21 @@ document.addEventListener('DOMContentLoaded', () => {
         let count = Math.ceil(data.length / 5)
         for (let i = 1; i <= count; i++) {
             let newPag = document.createElement('a')
-            newPag.href = "index.html?page=" + i
             newPag.classList.add('pag')
             newPag.innerText = i
+            newPag.addEventListener('click', function (e) {
+                document.querySelectorAll('.pag').forEach((item)=>{
+                    if(item.textContent == e.target.textContent){
+                        item.classList.add('active')
+                    }
+                    else {
+                        item.classList.remove('active')
+                    }
+                })
+                page = e.target.textContent
+                localStorage.setItem('page',e.target.textContent)
+                refreshTabel(data)
+            })
 
             if (i == page) {
                 newPag.classList.add('active')
@@ -143,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
             item.email.toLowerCase().indexOf(text) >= 0
             return item.username.toLowerCase().indexOf(text) >= 0 || item.email.toLowerCase().indexOf(text) >= 0;
         })
-        localStorage.setItem('search',text)
+        localStorage.setItem('search', text)
         refreshTabel(test)
         createPag(test)
         clearVisible()
@@ -165,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 else return 0;
             })
             searchFilter(document.querySelector('.searchInput').value.toLowerCase())
-            localStorage.setItem('sort',JSON.stringify({'click':1,'source':"data"}))
+            localStorage.setItem('sort', JSON.stringify({ 'click': 1, 'source': "data" }))
 
             date.classList.add('active')
             clearVisible()
@@ -179,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             searchFilter(document.querySelector('.searchInput').value.toLowerCase())
             clearVisible()
-            localStorage.setItem('sort',JSON.stringify({'click':2,'source':"data"}))
+            localStorage.setItem('sort', JSON.stringify({ 'click': 2, 'source': "data" }))
             date.classList.remove('firstClick')
             date.classList.add('doubleClick')
         }
@@ -208,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 else return 0;
             })
             searchFilter(document.querySelector('.searchInput').value.toLowerCase())
-            localStorage.setItem('sort',JSON.stringify({'click':1,'source':"rating"}))
+            localStorage.setItem('sort', JSON.stringify({ 'click': 1, 'source': "rating" }))
             rating.classList.add('active')
             clearVisible()
             rating.classList.add('firstClick')
@@ -220,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 else return 0;
             })
             searchFilter(document.querySelector('.searchInput').value.toLowerCase())
-            localStorage.setItem('sort',JSON.stringify({'click':2,'source':"rating"}))
+            localStorage.setItem('sort', JSON.stringify({ 'click': 2, 'source': "rating" }))
             clearVisible()
             rating.classList.remove('firstClick')
             rating.classList.add('doubleClick')

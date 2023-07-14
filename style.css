@@ -269,6 +269,7 @@ body {
 }
 
 .pag {
+    cursor: pointer;
     padding: 9px 15px;
     font-family: Inter;
     font-size: 13px;
